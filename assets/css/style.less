@@ -1,0 +1,458 @@
+.transformRotate(@value){ 
+    -ms-transform: rotate(@value)!important;
+    -webkit-transform: rotate(@value)!important;
+    transform: rotate(@value)!important;
+ }
+.border-radius(@value){
+	-webkit-border-radius: @value;
+    -moz-border-radius: @value;
+	border-radius: @value;
+}
+.box-shadow(@h, @v, @blur, @spread, @color){
+	-moz-box-shadow: @h @v @blur @spread @color;
+	-webkit-box-shadow: @h @v @blur @spread @color;
+	box-shadow: @h @v @blur @spread @color;
+}
+
+.box-shadow-inset(@h, @v, @blur, @spread, @color){
+	-moz-box-shadow: @h @v @blur @spread @color inset;
+	-webkit-box-shadow: @h @v @blur @spread @color inset;
+	box-shadow: @h @v @blur @spread @color inset;
+}
+.transition(@property, @duration, @function: ease, @delay: 0s){
+	-webkit-transition: @property @duration @function @delay;
+	-moz-transition: @property @duration @function @delay;
+	-ms-transition: @property @duration @function @delay;
+	-o-transition: @property @duration @function @delay;
+	transition: @property @duration @function @delay;
+} 
+
+/**
+example: 
+.placeholder({
+    color: #0000FF;
+    text-transform: uppercase;
+});
+**/
+.placeholder(@rules) {
+  &::-webkit-input-placeholder {
+      @rules();
+  }
+  &:-moz-placeholder {
+      @rules();
+  }
+  &::-moz-placeholder {
+      @rules();
+  }
+  &:-ms-input-placeholder {
+      @rules();
+  }
+}
+
+
+@font-face {
+  font-family: Samim;
+  src: url('../font/samim/Farsi-Digits/Samim-FD.eot');
+  src: url('../font/samim/Farsi-Digits/Samim-FD.eot?#iefix') format('embedded-opentype'),
+       url('../font/samim/Farsi-Digits/Samim-FD.woff') format('woff'),
+       url('../font/samim/Farsi-Digits/Samim-FD.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Samim;
+  src: url('../font/samim/Farsi-Digits/Samim-Bold-FD.eot');
+  src: url('../font/samim/Farsi-Digits/Samim-Bold-FD.eot?#iefix') format('embedded-opentype'),
+       url('../font/samim/Farsi-Digits/Samim-Bold-FD.woff') format('woff'),
+       url('../font/samim/Farsi-Digits/Samim-Bold-FD.ttf') format('truetype');
+  font-weight: bold;
+}    
+  
+
+@totalMargin: 40px;
+@totalMarginMobile: 1em;
+
+@colorBorder: #e5e5e5;
+
+
+@slideMenuSize: 16em;
+@sliderTransitionTime: .6s;
+@sliderAnimation: ease-in-out;
+
+
+
+h1{
+	color: #222;
+}
+a{
+	text-decoration: none;
+	color: #000;
+	&:hover{ 
+		color: #444;
+	}
+}
+
+body{
+	background-color: #f5f5f5;
+	color: #666;
+	margin: 0;
+	padding: 0;	
+	font-family: 'Samim';
+	min-width: 100%;
+	font-weight: 300;
+	line-height: 1.5em; 
+	overflow-x: hidden;
+} 
+
+#main{
+	.transition(all, @sliderTransitionTime, @sliderAnimation); 
+	width: 100%; 
+}
+
+
+#search-form{ 
+	width: 100%;
+	position: absolute;
+	display: none;
+	input{
+		width: 100%;
+		font-size: 1.3em;
+		padding: 1em @totalMargin;
+		border: 1px solid @colorBorder;
+	}
+}
+
+#slide-menu{
+	background: #000;
+	width: @slideMenuSize;
+	position: fixed;
+	color: #fff; 
+	top: 0;
+	right: 0;
+	height: 100%;
+	overflow-y: scroll;
+	margin-right: -@slideMenuSize;
+	z-index: 22;
+	.transition(all, @sliderTransitionTime, @sliderAnimation);
+	#slide-menu-wrapper{
+		.header{
+			margin: 2em;
+		}
+		.title{
+			font-size: 3em;
+			line-height: 0;
+			a{
+				color: inherit;
+			}
+		}
+		.desc{
+			font-size: 0.8em;
+			font-weight: 300;
+		} 
+		.categories{
+			color: #fff;
+			list-style: none; 
+			margin: 2em 0;
+			padding: 0;
+			a{
+				color: #fff;
+				display: block;
+				padding: 0.4em 2em;
+				&:hover, &:focus{
+					background-color: #17c;
+				}
+			} 
+		}
+		.tags-cloud{ 
+			margin: 1em;
+			text-align: justify;
+			a{
+				color: inherit;
+				&:hover{
+					color: #29f;
+				}
+			}
+		}
+	}
+}
+.slide-menu-opened{
+	margin-right: 0!important;
+}
+
+.faded{
+	opacity: 0.4;
+}
+
+.pushed-main{  
+	//margin-right: @slideMenuSize;
+}
+
+#header{
+	padding-top: 6em;
+	#btn-search, #btn-slide-menu{ 
+		cursor: pointer;
+	}
+	#btn-search{
+		margin-left: @totalMargin;
+		float: left; 
+	}
+	#btn-slide-menu{
+		float: right;
+		margin-right: @totalMargin;
+	}
+	#banner{ 
+		text-align: center;  
+		#title{
+			color: #444;
+			font-weight: 500;
+			line-height: 0;
+			font-size: 1.5em;
+			a{
+				.transition(font-weight, .6s, ease-in-out);
+				.transition(color, .6s, ease-in-out);
+				color: inherit;  
+				&:hover{
+					color: #000;
+					font-weight: 700;
+				}
+			}
+		}
+		#desc{
+			color: #999; 
+			font-weight: 300;
+			font-size: 0.8em;
+		}
+	}
+}
+
+#base-wrapper, #footer{ 
+	max-width: 45em;
+	margin: 2em auto 1em auto; 
+	.transition(all, @sliderTransitionTime, @sliderAnimation);
+}
+
+.post, #pagination, #tags, #comments{ 
+	margin: 0 @totalMargin;
+}
+
+.post, #pagination{ 
+	background: #fff;
+	border: 1px solid @colorBorder;
+	.border-radius(4px);
+	margin: 3em @totalMargin;
+	padding: 2em; 
+}
+.post .post-content, #comments .content, #comments .head{
+	a{
+		color: #29f;
+		&:hover{
+			color: #000;
+		}
+	}
+}
+.post{ 
+	.post-title{ 
+		line-height: 1.2em;
+		a{color: inherit}
+	}
+	.categories{
+		font-size: 0.8em;
+		font-weight: 300;
+		font-family:  'Samim';
+
+		a{
+			color: inherit;
+			&:hover{
+				color: #222;
+			}
+		}
+	}
+	.post-date{
+		font-size: 0.8em;
+		color: #888;
+	}
+	.post-title{
+		font-size: 1.7em;
+	}    
+	.post-content{
+		img {
+		    width: 100%; 
+		    height: auto;
+		    border-radius: 3px;
+		    .box-shadow(0, 2px, 4px, 0, #ddd);
+		} 
+		img.alignleft {
+			float: left;
+		}
+		img.alignright {
+			float: right;
+		}
+		img.aligncenter {
+		  display: block;
+			margin: auto;
+		}		
+		blockquote{
+			background-color: #f7f7f7;
+			.border-radius(0.3em);
+			margin: 1em 1em 1em 0;
+			color: #444; 
+			padding: 0.2em 1em;
+			border-right: 0.3em solid #efefef;
+		}
+	}
+} 
+
+#pagination{ 
+	padding-top: 0;
+	padding-bottom: 0;
+	h3{display: inline-block;}
+	a{color: inherit;}
+	#next{
+		float: left;
+	}
+}
+
+#tags{
+	font-size: 0.8em;
+	span{
+		font-weight: bold;
+	}
+}
+
+#comments{
+	margin-top: 2em;
+	.comment{
+		border-top: 1px solid #e5e5e5;
+		padding: 1em 0;
+		.head{ 
+			.avatar, .comment-author{
+				display: inline-block;
+				vertical-align: middle;			
+			}
+			.avatar{
+				width: 32px;
+				height: 32px;
+				.border-radius(100%); 
+			}
+			.comment-author{
+				font-size: 0.9em; 
+				margin-right: 0.6em; 
+				font-weight: bold;
+			}
+			.admin-label, .not-approved-lebel{
+				font-size: 0.6em;
+				font-weight: 700;
+				color: #fff;
+				display: inline;
+				padding: 0.2em 0.3em 0.3em;
+				text-align: center;
+				font-family: monospace, Samim;
+				vertical-align: middle;
+				.border-radius(0.2em);	
+			}
+			.admin-label{
+				background-color: #5b5;
+			}
+			.not-approved-lebel{ 
+				background-color: #777; //#5b5;
+			}
+		}
+		.content{ 
+			margin-right: 3em;
+			font-size: 0.9em;
+			font-weight: 300;
+		}
+	}
+	#commentform{
+		margin-top: 2em;
+		text-align: center;
+		input, textarea{ 
+			margin:0;
+			padding: 0.6em 2%; 
+			border: 1px solid @colorBorder;
+			.border-radius(4px);
+			font-family: 'Samim';
+		}
+		input{ 
+			width: 26.5%; 
+		}
+		input[name=author]{
+			margin-left: 2.5%;
+		}
+		input[name=email],input[name=url]{
+			directly: ltr;
+			text-align: left;
+			.placeholder({
+				text-align: right;
+				directly: rtl;
+			});
+		}
+		input[name=url]{ 
+			margin-right: 2.5%; 
+		}
+		textarea{
+			display: block;
+			margin: 1em auto;  
+			width: 94%;
+			font-size: 1em;
+			resize: vertical;
+		}
+		input[name=submit]{ 
+			background-color: #5b5;
+			border: none;
+			color: #fff;
+			cursor: pointer;
+			font-weight: 700;
+			float: left;
+			&:hover{
+				background-color: #5a5;
+			}
+		}
+		#send-button-wrapper{ 
+			margin: 1em auto; 
+			width: 98%;
+		}
+	}
+}
+
+#footer{ 
+	margin-top: 5em;
+	text-align: center;
+	clear: both;
+	border-top: 1px solid @colorBorder;
+	font-size: 0.8em;
+}
+
+
+@media all and (max-width: 640px){
+	body{
+		font-size: 110%;
+	}
+
+	#header{ 
+		#btn-search{
+			margin-left: @totalMarginMobile; 
+		}
+		#btn-slide-menu{ 
+			margin-right: @totalMarginMobile;
+		}
+	}	
+	.post, #pagination{ 
+		padding: 1em; 
+	}	
+	.post, #pagination, #tags, #comments{ 
+		margin: @totalMarginMobile;
+	}
+	#comments #commentform{
+		input{
+			display: block;
+			width: 95%;
+			margin: 2.5% 0 2.5% 0!important;
+		} 
+		input[name=submit]{
+			width: 100%;
+		}
+	}
+}
+
+ 
