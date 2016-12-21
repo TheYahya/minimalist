@@ -11,6 +11,7 @@
     <title><?php wp_title( '&raquo;', true, '' ); ?></title>
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/font/fontello/css/fontello.css">
     <link href="<?php echo get_template_directory_uri(); ?>/assets/css/style.min.css" rel="stylesheet">
+    <link rel="alternate" type="application/rss+xml" title="Feed Title" href="<?php bloginfo('url') ?>/feed/" />
     <?php wp_head();?> 
 <head>
 <body dir="rtl">
