@@ -22,7 +22,7 @@
 		<div class="head">
 		<?php echo get_avatar( $comment, 32 ); ?>
 		<?php if($comment->comment_author_url != null){?>
-			<span class="comment-author"><a href="<?php echo $comment->comment_author_url ?>"><?php echo($comment->comment_author);?></a></span>
+			<span class="comment-author"><a target="blank" href="<?php echo $comment->comment_author_url ?>"><?php echo($comment->comment_author);?></a></span>
 		<?php } else {?>
 			<span class="comment-author"><?php echo($comment->comment_author);?></span>
 		<?php } ?>
