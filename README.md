@@ -1,2 +1,2 @@
 # minimalist
-minimal wordperss theme
+persian minimal wordperss theme.
