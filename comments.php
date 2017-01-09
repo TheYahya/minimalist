@@ -33,7 +33,7 @@
 		<?}?>
 		</div>
 		<div class="content">
-				<?php echo $comment->comment_content; ?>
+				<?php echo wpautop($comment->comment_content); ?>
 		</div>
 	</div>   
 <?}?>  
