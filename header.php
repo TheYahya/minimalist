@@ -20,15 +20,26 @@
 			<div class="header">
 				<h3 class="title"><a href="<?php echo bloginfo('url');?>"><?php echo bloginfo('title') ?></a></h3>
 				<h4 class="desc"><?php echo bloginfo('description');?></h4>
-			</div>
-			<div class="categories-wrapper">
-				<?php $categories = get_categories();?>
-				<ul class="categories">
-				  <?php foreach ($categories as $category) {?>
-				  	<li><h3><a href="<?php echo get_category_link($category); ?>"><?php echo $category->name; ?></a></h3></li>
-				  <? } ?>
-				</ul>
-			</div>
+			</div> 
+			<?php $pages = get_pages(array(
+				'sort_order'=>'ASC',
+				'post_type'=>'page',
+				'post_status'=>'publish',
+			));?>
+			<h5 class="sub-title">برگه‌ها</h5>
+			<ul class="categories"> 
+			  <?php foreach ($pages as $page) {?>
+			  	<li><h3><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title; ?></a></h3></li>
+			  <? } ?>
+			</ul> 
+			<?php $categories = get_categories();?>
+			<h5 class="sub-title">دسته‌ها</h5>
+			<ul class="categories"> 
+			  <?php foreach ($categories as $category) {?>
+			  	<li><h3><a href="<?php echo get_category_link($category); ?>"><?php echo $category->name; ?></a></h3></li>
+			  <? } ?>
+			</ul>
+			<h5 class="sub-title">تگ‌ها</h5>
 			<div class="tags-cloud">
 				<?php wp_tag_cloud( $args ); ?>
 			</div>
