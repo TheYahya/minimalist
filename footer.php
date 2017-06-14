@@ -4,7 +4,7 @@ if ('footer.php' == basename($_SERVER['SCRIPT_FILENAME'])) {
 }
 ?>
 	<div id="footer">
-		<p>The <a target="blank" href="https://github.com/ysarbabi/minimalist">Minimalist</a> theme (v=0.5), design and develop by <a href="http://ysarbabi.ir/">@ysarbabi</a></p>
+		<p>The <a target="blank" href="https://github.com/theyahya/minimalist">Minimalist</a> theme (v=0.5), design and develop by <a href="http://ysarbabi.ir/">@ysarbabi</a></p>
 	</div>
 </div>
 <?php wp_footer();?>
